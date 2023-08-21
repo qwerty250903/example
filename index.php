@@ -8,7 +8,7 @@
     
     //Получиаем количество пользователей
     public function devMethod(){
-      $code = 'var members = API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).items;var offset = 1000;while (offset < 25000 && (offset + 0) < 100){members = members + "," + API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "count": 1000, "offset": (0 + offset)}).items;offset = offset + 1000;};return API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).count;';
+      $code = 'var members = API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).items;var offset = 1000;while (offset < 25000 && (offset + 0) < 100){members = members + "," + API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "count": 1000, "offset": (0 + offset)}).items;offset = offset + 1000;};return API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).count;';
       //запрос на получения количества участников
       $count = getMethod("execute", ["code" => urlencode($code), "v"=>"5.131", "access_token" => $this->access_token], true);
       $count = $count->response;
@@ -19,7 +19,7 @@
     //Получиаем данные
     public function getMembers($group_id, $count) {
       print "\nВыполняетя:\n\nAPI: ". $this->access_token . "\n\n";  
-      $code = 'return API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "count":'. $count .', "offset":'. 0 .', fields: "name, bdate, country, city, age"}).items;';
+      $code = 'return API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "count":'. $count .', "offset":'. 0 .', fields: "name, bdate, country, city, age"}).items;';
       //запрос на получения данных n-нного количества пользователей
       $answer = getMethod("execute", ["code" => urlencode($code), "v"=>"5.131", "access_token" => $this->access_token], true);
       //print_r($answer->response[0]);
@@ -27,7 +27,7 @@
       return $answer;
     }
     public function countMembers(){
-      $code = 'var members = API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).items;var offset = 1000;while (offset < 25000 && (offset + 0) < 100){members = members + "," + API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "count": 1000, "offset": (0 + offset)}).items;offset = offset + 1000;};return API.groups.getMembers({"group_id": 222059481, "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).count;';
+      $code = 'var members = API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).items;var offset = 1000;while (offset < 25000 && (offset + 0) < 100){members = members + "," + API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "count": 1000, "offset": (0 + offset)}).items;offset = offset + 1000;};return API.groups.getMembers({"group_id": '. $this->group_id.', "v": "5.131", "sort": "id_asc", "offset": 0, fields: "name, birthday, country, city, age"}).count;';
       //запрос на получения количества участников
       $count = getMethod("execute", ["code" => urlencode($code), "v"=>"5.131", "access_token" => $this->access_token], true);
       $count = $count->response;
