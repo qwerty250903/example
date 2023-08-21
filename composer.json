@@ -1,0 +1,8 @@
+{
+    "require": {
+        "composer/composer":"*",
+        "vkcom/vk-php-sdk": "*",
+        "mongodb/mongodb": "^1.16",
+        "jenssegers/mongodb": "*"
+    }
+}
