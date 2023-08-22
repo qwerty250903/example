@@ -7,4 +7,3 @@
         $decoded = json_decode($data);
         return ($decode ? $decoded : $data);
     }
-?>
