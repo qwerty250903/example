@@ -28,9 +28,15 @@
             else{
                 $city = 'NULL';
             }
-            $collection->insertOne(['first_name' => $first_name, 'last_name'=> $last_name, 'bdate'=> $birthday, 'age'=>$age, 'country'=>$country,'city'=>$city]);
+            $collection->insertOne([
+                'first_name' => $first_name, 
+                'last_name'=> $last_name, 
+                'bdate'=> $birthday, 
+                'age'=>$age, 
+                'country'=>$country,
+                'city'=>$city
+            ]);
             //print_r("\nInsersted with Object ID". $result->getInsertID());
         }
         print"\n\nКоличество участников: ". $count ."\n\n";
   }
-?>
